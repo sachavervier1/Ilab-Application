@@ -1,0 +1,39 @@
+{
+    "options": [
+        {
+            "name": "DWT",
+            "image": [
+                "vfx1.png",
+                "vfx1.png"
+            ]
+        },
+        {
+            "name": "3D",
+            "image": [
+                "vfx1.png",
+                "vfx1.png"
+            ]
+        },
+        {
+            "name": "CG",
+            "image": [
+                "vfx1.png",
+                "vfx1.png"
+            ]
+        },
+        {
+            "name": "IR",
+            "image": [
+                "vfx1.png",
+                "vfx1.png"
+            ]
+        },
+        {
+            "name": "JV",
+            "image": [
+                "vfx1.png",
+                "vfx1.png"
+            ]
+        }
+    ]
+}

@@ -1,3 +1,203 @@
 @import 'utils/variables';
 @import 'components/type';
 @import '../../node_modules/modern-normalize/modern-normalize';
+
+body {
+    background-color: #101010;
+    overflow-x: hidden;
+    background-image: url(../assets/images/imageback.png);
+    margin: 0;
+    font-size: 20px;
+    color: white;
+
+    h2 {
+        font-weight: bold;
+        font-size: 64px;
+        font-style: 'Lexend';
+        margin-top: 20px;
+        margin-bottom: 20px;
+        line-height: 50px;
+    }
+
+
+
+    a {
+        color: white;
+        text-decoration: none;
+
+        &:visited {
+            color: white;
+        }
+    }
+}
+
+.logo {
+    position: absolute;
+    top: 4.5%;
+    left: 2.5%;
+}
+
+.blur {
+    position: absolute;
+    left: 0%;
+    top: 0%;
+}
+
+.buttonback {
+    position: absolute;
+    top: 6%;
+    right: 3%;
+}
+
+
+.gridcontainer {
+    margin-top: 190px;
+    display: grid;
+    grid-template-columns: 94px repeat(3, 1fr) 94px;
+    column-gap: 86px;
+    row-gap: 86px;
+
+    p {
+        text-align: center;
+    }
+
+
+}
+
+img {
+    width: 100%;
+
+}
+
+.grid__el0 {
+    grid-column: 2;
+    grid-row: 1;
+    z-index: 100;
+
+}
+
+.grid__el1 {
+    grid-column: 3;
+    grid-row: 1;
+}
+
+.grid__el2 {
+    grid-column: 4;
+    grid-row: 1;
+}
+
+.grid__el3 {
+    grid-column: 2;
+    grid-row: 2;
+}
+
+.grid__el4 {
+    grid-column: 3;
+    grid-row: 2;
+}
+
+.grid__el5 {
+    grid-column: 4;
+    grid-row: 2;
+}
+
+.grid__el6 {
+    grid-column: 2;
+    grid-row: 3;
+}
+
+.grid__el7 {
+    grid-column: 3;
+    grid-row: 3;
+}
+
+.grid__el8 {
+    grid-column: 4;
+    grid-row: 3;
+}
+
+.grid__el9 {
+    grid-column: 2;
+    grid-row: 4;
+}
+
+.grid__el10 {
+    grid-column: 3;
+    grid-row: 4;
+}
+
+.grid__el11 {
+    grid-column: 4;
+    grid-row: 4;
+}
+
+.grid__el12 {
+    grid-column: 2;
+    grid-row: 5;
+}
+
+.grid__el13 {
+    grid-column: 3;
+    grid-row: 5;
+}
+
+.grid__el14 {
+    grid-column: 4;
+    grid-row: 5;
+}
+
+.grid__el15 {
+    grid-column: 2;
+    grid-row: 6;
+}
+
+.grid__el16 {
+    grid-column: 3;
+    grid-row: 6;
+}
+
+.grid__el17 {
+    grid-column: 4;
+    grid-row: 6;
+}
+
+.grid__el18 {
+    grid-column: 2;
+    grid-row: 7;
+}
+
+.grid__el19 {
+    grid-column: 3;
+    grid-row: 7;
+}
+
+.grid__el20 {
+    grid-column: 4;
+    grid-row: 7;
+}
+
+.p-flex {
+    position: absolute;
+    top: 15%;
+    left: 50%;
+    right: 2.5%;
+    font-size: 24px;
+    margin-top: 50px;
+    line-height: 32px;
+
+    p {
+        margin-top: 75px;
+    }
+}
+
+.svg-flex {
+    position: absolute;
+    top: 18%;
+    left: 2.5%;
+}
+
+.pdp {
+    position: absolute;
+    bottom: 1%;
+    right: 2.5%;
+}
