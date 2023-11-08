@@ -5,8 +5,71 @@ import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { ScrollToPlugin } from "gsap/dist/ScrollToPlugin";
 import { MotionPathPlugin } from "gsap/dist/MotionPathPlugin";
 import { PixiPlugin } from "gsap/dist/PixiPlugin";
+import { Draggable } from "gsap/Draggable";
 
-gsap.registerPlugin(ScrollTrigger, ScrollToPlugin, MotionPathPlugin, PixiPlugin);
+gsap.registerPlugin(ScrollTrigger, ScrollToPlugin, MotionPathPlugin, PixiPlugin,Draggable);
+
+
+var previousRotation = 0;
+const spans = document.querySelectorAll('ul#dial li span');
+Draggable.create('#dial', {
+  type:'rotation',
+  throwProps: true,
+  onDrag: function() {
+    var yourDraggable = Draggable.get('#dial');
+    
+    
+    var direction = (yourDraggable.rotation - previousRotation) > 0 ? "clockwise" : "counter-clockwise";
+    console.log("Direction: " + direction + ", angle: " + yourDraggable.rotation);
+    
+    var snapAngle = 60; // Angle de snap (en degrés)
+    var snappedRotation = Math.round(yourDraggable.rotation / snapAngle) * snapAngle;
+    
+    gsap.to(yourDraggable.target, 0.3, { rotation: snappedRotation, overwrite: true });
+    
+    previousRotation = snappedRotation;
+
+    // Détection de chevauchement
+   
+    const div = document.querySelector('#clicker');
+    const mot = document.querySelector('.mot');
+    const contenus = document.querySelector('.contenu');
+    
+    ///
+
+    spans.forEach(span => {
+      const spanRect = span.getBoundingClientRect();
+      const divRect = div.getBoundingClientRect();
+
+      if (
+        spanRect.top < divRect.bottom &&
+        spanRect.bottom > divRect.top &&
+        spanRect.left < divRect.right &&
+        spanRect.right > divRect.left
+      ) {
+        span.classList.toggle('mot');
+        mot.addEventListener('click', () => {
+        
+          gsap.to(span,{y:-1000, duration:0.8, delay:0.4}); 
+          gsap.to(".page_Accueil",{display:"none",opacity:0,duration:2,delay:1.5});
+          gsap.to(".long",{x:-1500,duration:2, delay:0.48,
+            onComplete: function() {
+              
+              contenus.classList.remove('contenu');
+  
+            }
+          });
+          
+        });
+      } 
+     //else {
+    //     span.classList.remove('mot');
+      //}
+    });
+
+  }
+});
+
 
 
 
@@ -16,6 +79,11 @@ var jsonData = {
             "name": "DWT",
 
             "image": [
+
+                "../assets/images/vfx1.png",
+                "../assets/images/vfx2.png",
+                "../assets/images/vfx3.png",
+                "../assets/images/vfx4.png"
 
             ]
         },
@@ -78,20 +146,26 @@ var jsonData = {
     ]
 };
 
-var selectElement = document.getElementById("selectOption");
+// var selectedSpan  = document.querySelector(".mot");
+// console.log(selectedSpan);
 var imageContainer = document.getElementById("imageContainer");
 
 // Écoutez les changements de sélection de l'option
-selectElement.addEventListener("change", function () {
+spans.forEach(span => {
+    span.addEventListener("click", function() {
+           // Obtenez la valeur de l'option sélectionnée
+      var selectedOption = span.getAttribute("value");
+      console.log(selectedOption);
     // Effacez le contenu précédent
     imageContainer.innerHTML = "";
-
-    // Obtenez la valeur de l'option sélectionnée
-    var selectedOption = selectElement.value;
+    
+ 
 
     // Recherchez l'option sélectionnée dans le tableau JSON
     var selectedData = jsonData.options.find(option => option.name === selectedOption);
+    console.log(selectedData);
     var datalenght = selectedData.image;
+
     if (selectedData) {
         // Utilisez une boucle pour afficher les images correspondantes
         for (let i = 0; i < datalenght.length; i++) {
@@ -109,7 +183,8 @@ selectElement.addEventListener("change", function () {
         }
     }
 });
+});
 
 
 // Déclenchez l'événement change pour afficher les images initiales
-selectElement.dispatchEvent(new Event("change"));
+//selectElement.dispatchEvent(new Event("change"));
