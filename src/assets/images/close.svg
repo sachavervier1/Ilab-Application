@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 113.4 113.4">
+  <defs>
+    <style>
+      .cls-1 {
+        stroke-miterlimit: 10;
+      }
+
+      .cls-1, .cls-2 {
+        stroke: #fff2d2;
+      }
+
+      .cls-1, .cls-2, .cls-3 {
+        fill: none;
+      }
+
+      .cls-2 {
+        stroke-width: 7px;
+      }
+
+      .cls-2, .cls-3 {
+        stroke-linecap: round;
+      }
+
+      .cls-4 {
+        fill: #fff2d2;
+        stroke-width: 0px;
+      }
+
+      .cls-4, .cls-3, .cls-5 {
+        display: none;
+      }
+
+      .cls-3 {
+        stroke: #ff000d;
+        stroke-width: 3px;
+      }
+    </style>
+  </defs>
+  <g id="Calque_1_-_copie" data-name="Calque 1 - copie" class="cls-5">
+    <line class="cls-2" x1="69.9" y1="69.9" x2="58.3" y2="58.3"/>
+    <line class="cls-2" x1="54.9" y1="54.9" x2="43.7" y2="43.7"/>
+    <line class="cls-2" x1="69.9" y1="69.9" x2="58.3" y2="58.3"/>
+    <line class="cls-2" x1="54.9" y1="54.9" x2="43.7" y2="43.7"/>
+    <line class="cls-2" x1="69.9" y1="43.7" x2="58.5" y2="55.1"/>
+    <line class="cls-2" x1="55.1" y1="58.5" x2="43.7" y2="69.9"/>
+  </g>
+  <g id="Calque_1" data-name="Calque 1">
+    <path class="cls-3" d="M43.7,43.7l26.2,26.2"/>
+    <path class="cls-3" d="M43.7,43.7l26.2,26.2"/>
+    <path class="cls-3" d="M43.7,69.9l26.2-26.2"/>
+    <path class="cls-1" d="M99.1,89.6c2.4,2.4,2.4,6.2,0,8.6l-1,1c-2.4,2.4-6.2,2.4-8.6,0l-32.9-32.9-32.9,32.9c-2.4,2.4-6.2,2.4-8.6,0l-1-1c-2.4-2.4-2.4-6.2,0-8.6l32.9-32.9L14.3,23.8c-2.4-2.4-2.4-6.2,0-8.6l1-1c2.4-2.4,6.2-2.4,8.6,0l32.9,32.9L89.6,14.3c2.4-2.4,6.2-2.4,8.6,0l1,1c2.4,2.4,2.4,6.2,0,8.6l-32.9,32.9,32.9,32.9Z"/>
+    <polygon class="cls-4" points="60 56.6 58.3 58.3 56.6 60 55.1 58.5 53.2 56.6 54.9 54.9 56.6 53.2 58.5 55.1 60 56.6"/>
+  </g>
+  <g id="Calque_3" data-name="Calque 3">
+    <image width="326" height="287" transform="translate(-85.7 -68.5) scale(.9)" xlink:href="blur.png"/>
+  </g>
+</svg>

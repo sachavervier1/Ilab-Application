@@ -76,7 +76,7 @@ body {
 
 .gridcontainer {
     margin-top: 190px;
-    display: grid;
+    // display: grid;
     grid-template-columns: 94px repeat(3, 1fr) 94px;
     column-gap: 86px;
     row-gap: 86px;
@@ -87,6 +87,65 @@ body {
 
 
 }
+
+.close-button ,.back-button{
+  position: fixed;
+  top: 30px;
+  right: 30px; /* Positionnez la croix à droite */
+  width: 30px; /* Ajustez la taille de la croix selon vos besoins */
+  cursor: pointer;
+  z-index: 1000; /* Assurez-vous qu'elle est bien au-dessus de tout le reste */
+}
+
+.grid {
+  display: grid; /* Configuration initiale de la grille */
+}
+
+.grid.inactive {
+  display: flex; /* Masque la grille lorsqu'elle est inactive */
+}
+
+
+
+/* Styles pour la nouvelle DA */
+.da-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  // background-color: #f0f0f0;
+  border-radius: 10px;
+}
+
+.da-image {
+  max-width: 50%;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+.da-text {
+  font-size: 1.2em;
+  color: #333;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.da-site-button {
+  padding: 10px 20px;
+  font-size: 1em;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  background-color: #333;
+  color: white;
+}
+
+.da-site-button:hover {
+  background-color: #555;
+}
+
+
 
 img {
     width: 100%;
@@ -238,15 +297,15 @@ img {
 .long {
   height: 65vh;
   position: fixed;
-  top: 17.5%;
-  right: 1%;
+  // top: 17.5%;
+  // right: 1%;
   z-index: 0;
 }
 
 .menu{
   height: 100vh;
   position: fixed;
-  right: 6%;
+  // right: 6%;
 
   
 }
@@ -256,9 +315,9 @@ img {
 #clicker {
   position: absolute;
   top: 47%;
-  right: 54%;
-  width: 40%;
-  height: 80%;
+  right: 60%;
+  width: 15%;
+  height: 50%;
   z-index: 5;
   transform-origin: 50% 20px;
   transform: rotate(-90deg);
@@ -266,21 +325,68 @@ img {
 }
 
 
-ul{
 
+
+// // .mot{
+// //   transform: rotate(90deg); 
+// //   font-size: 50px; 
+// //   transition: transform 0.3s ease, font-size 0.3s ease;
+// // }
+
+// // .mot:not(.mot) {
+// //   transition: transform 0.3s ease, font-size 0.3s ease;
+// // }
+
+// // // li:nth-child(1) span.mot  {
+// // //   transform: translateX(-10%) translateY(100%) rotate(90deg); ;
+// // // }
+
+// // // li:nth-child(5) span.mot  {
+// // //   transform: translateY(-135%) rotate(90deg); ;
+// // // }
+
+// // // li:nth-child(6) span.mot  {
+// // //   transform: translateY(-15%) rotate(90deg); ;
+// // // }
+// // // li:nth-child(4) span.mot  {
+// // //   transform: translateX(-12%) rotate(90deg); ;
+// // // }
+// // // li:nth-child(3) span.mot  {
+// // //   transform: translateX(-5%) rotate(90deg); ;
+// // // }
+
+// .mileushadowlong{
+
+//   width: 100vw;
+// }
+
+#dial {
+  touch-action: pan-left;
+}
+
+
+.contenu{
+
+  display:none;
+}
+
+
+
+ul{
   padding: 0;
+  top: 0;
+  left: 42%;
   margin: 100px;
   list-style: none;
-  width: 1100px;
-  height: 1100px;
-  right:-46%;
-  top:0px;
-  
-  border: 2px solid transparent;
+  width: 500px;
+  height: 500px;
+  border: 2px solid red;
   position: relative;
   border-radius: 50%;
-  
 
+}
+.taille{
+  width:50%;
 }
 
 li{
@@ -288,15 +394,20 @@ li{
   position: absolute;
   top: -10px;
   left: 50%;
-  width: 54%;
+  width: 90%;
   transform: translateX(-50%);
-  transform-origin: center 560px;
+  transform-origin: center 270px;
+
+
+
+
 
 }
 
 li:nth-child(1){
   
-  transform: translateX(-40%) translateY(-20%) rotate(-30deg)
+  transform: translateX(-50%) rotate(-30deg);
+
 }
 
 li:nth-child(2){
@@ -307,26 +418,26 @@ li:nth-child(2){
 
 li:nth-child(3){
 
-  transform: translateX(-50%) translateY(-60%) rotate(-150deg)
+  transform: translateX(-50%) rotate(-150deg);
 
 }
 
 li:nth-child(4){
 
-  transform: translateX(-50%) translateX(-15%) rotate(-210deg)
+  transform: translateX(-50%) rotate(-210deg);
   
 
 }
 
 li:nth-child(5){
 
-  transform: translateX(-60%) rotate(-270deg);
+  transform: translateX(-50%) rotate(-270deg);
 
 }
 
 li:nth-child(6){
 
-  transform: translateX(-50%) translateY(80%) rotate(-330deg)
+  transform: translateX(-50%) rotate(-330deg);
 
 }
 
@@ -349,55 +460,74 @@ li:nth-child(9){
 }
 
 span{
- transform: rotate(0deg);
+ transform: rotate(90deg);
   display: block;
   font-family: 'Technor-Bold';
-  font-size: 40px;
+  font-size: 25px;
   font-weight: 700;
   font-display: swap;
   font-style: normal;
   color: beige;
+  display: flex;
+  align-items: center;
+  margin-top: -11%;
+}
+
+.menu__svg{
+
+  width: 20%;
+  // margin-top: 5%;
+  margin-right: 15%;
+  // display: none;
 }
 
 .mot{
-  transform: rotate(90deg); 
-  font-size: 50px; 
-  transition: transform 0.3s ease, font-size 0.3s ease;
+
+  // margin-top: -55%;
 }
 
-.mot:not(.mot) {
-  transition: transform 0.3s ease, font-size 0.3s ease;
+.mot .menu__svg{
+
+  // width: 20%;
+  // // margin-top: 5%;
+  // margin-right: 10%;
+  // display: block;
 }
 
-li:nth-child(1) span.mot  {
-  transform: translateX(-10%) translateY(100%) rotate(90deg); ;
+// .mot span {
+
+//   font-size: 40px;
+// }
+
+// .haut path{
+
+//   width: 562%;
+// }
+.icon_block{
+
+  display: none;
+}
+.icon_group{
+
+  width: 20%;
+  // position: relative;
+  // left: 40%;
+  // position: fixed;
+  position: absolute;
+  top: 47%;
+  left:0%;
+}
+.icon_group *{
+  position: absolute;
+}
+.icon_mot{
+
+  position: fixed;
+  left: 35%;
 }
 
-li:nth-child(5) span.mot  {
-  transform: translateY(-135%) rotate(90deg); ;
-}
+.icon_group img{
 
-li:nth-child(6) span.mot  {
-  transform: translateY(-15%) rotate(90deg); ;
-}
-li:nth-child(4) span.mot  {
-  transform: translateX(-12%) rotate(90deg); ;
-}
-li:nth-child(3) span.mot  {
-  transform: translateX(-5%) rotate(90deg); ;
-}
-
-.mileushadowlong{
-
-  width: 100vw;;
-}
-
-#dial {
-  touch-action: pan-left;
-}
-
-
-.contenu{
-
-  display:none;
+  width: 50%;
+  // position: absolute;
 }
