@@ -35,7 +35,7 @@ Draggable.create('#dial', {
     const contenus = document.querySelector('.contenu');
     
 
-    const icons = document.querySelectorAll('.icon_group img');
+    const icons = document.querySelectorAll('.icon-group img');
 
 spans.forEach(span => {
   const spanRect = span.getBoundingClientRect();
@@ -54,18 +54,18 @@ spans.forEach(span => {
       // Ajouter la classe 'mot' uniquement au span chevauchant
       span.classList.add('mot');
 
-      // Identifier l'icône correspondante et supprimer la classe 'icon_block'
+      // Identifier l'icône correspondante et supprimer la classe 'icon-group__block'
       icons.forEach(icon => {
           if (icon.getAttribute('value') === span.getAttribute('value')) {
-              icon.classList.remove('icon_block');
-            //   gsap.to(".icon_block", {  opacity: 0, duration: 1 });
+              icon.classList.remove('icon-group__block');
+            //   gsap.to(".icon-group__block", {  opacity: 0, duration: 1 });
           }
       });
 
       // Ajouter l'événement 'click' sur le span actuel
       span.addEventListener('click', () => {
-          gsap.to(span, { y: -1000, duration: 1, delay: 0.4 });
-          gsap.to(".icon_group", { x: -1000, duration: 1, delay: 0.4 });
+          gsap.to(span, { y: -1000, duration: 2, delay: 0.4 });
+          gsap.to(".icon-group", { x: -1000, duration: 2, delay: 0.4 });
           gsap.to(".page_Accueil", { display: "none", opacity: 0, duration: 2, delay: 1.5 });
           gsap.to(".long", {
               x: -1500,
@@ -77,11 +77,11 @@ spans.forEach(span => {
           });
       });
   } else {
-      // Réappliquer la classe 'icon_block' si le span ne chevauche pas
+      // Réappliquer la classe 'icon-group__block' si le span ne chevauche pas
       icons.forEach(icon => {
           if (icon.getAttribute('value') === span.getAttribute('value')) {
-              icon.classList.add('icon_block');
-            //   gsap.to(".icon_block", {  opacity: 1, duration: 1 });
+              icon.classList.add('icon-group__block');
+            //   gsap.to(".icon-group__block", {  opacity: 1, duration: 1 });
           }
       });
   }
@@ -90,34 +90,6 @@ spans.forEach(span => {
 
   }
 });
-
-
-
-
-// var previousRotation = 0;
-
-// Draggable.create('#dial', {
-//   type:'rotation',
-//   throwProps: true,
-//   onDrag: function() {
-//     var yourDraggable = Draggable.get('#dial');
-    
-//     var direction = (yourDraggable.rotation - previousRotation) > 0 ? "clockwise" : "counter-clockwise";
-//     console.log("Direction: " + direction + ", angle: " + yourDraggable.rotation);
-    
-//     var snapAngle = 60; // Angle de snap (en degrés)
-//     var snappedRotation = Math.round(yourDraggable.rotation / snapAngle) * snapAngle;
-    
-//     gsap.to(yourDraggable.target, 0.3, { rotation: snappedRotation, overwrite: true });
-    
-//     previousRotation = snappedRotation;
-//   }
-// });
-
-
-
-
-
 
 var jsonData = {
     "options": [
@@ -425,7 +397,7 @@ var gridContainer = document.querySelector(".grid"); // Sélectionnez votre cont
   // Créez le bouton de fermeture une seule fois
   var closeButton = document.createElement("img");
   closeButton.src = "../assets/images/close_rond.svg"; // Assurez-vous que l'image existe à cet emplacement
-  closeButton.classList.add("close-button");
+  closeButton.classList.add("button--close");
    // Ajoutez le bouton de fermeture à imageContainer
    imageContainer.appendChild(closeButton);
 
@@ -440,13 +412,23 @@ var gridContainer = document.querySelector(".grid"); // Sélectionnez votre cont
             var selectedOption = span.getAttribute("value");
             var selectedData = jsonData.options.find(option => option.name === selectedOption);
 
-            if (selectedData) {
-                imageContainer.innerHTML = '';  // Effacez le contenu précédent
+            if (selectedData.images.length === 0) {
+                // Si le tableau d'images est vide, afficher un message
+                var message = document.createElement("p");
+                message.classList.add("message__text");
+                message.textContent = "Aucune travaux n'est disponible pour cette option.";
+                imageContainer.appendChild(message);
+
+                // Modifier gridContainer pour qu'il soit en display: flex
+                gridContainer.style.display = 'flex';
+                gridContainer.style.justifyContent = 'center'; // Centrer le message horizontalement
+                gridContainer.style.alignItems = 'center';     // Centrer le message verticalement
+                gridContainer.style.height = '50vh'; 
+            } else {
+                // Sinon, afficher les images
                 selectedData.images.forEach((imageObj, i) => {
                     var div = document.createElement("div");
                     div.classList.add('grid__el', 'grid__el' + i);
-
-
 
                     var lien = document.createElement("a");
                     lien.href = "#"; // On ne change plus de page
@@ -465,6 +447,7 @@ var gridContainer = document.querySelector(".grid"); // Sélectionnez votre cont
                     });
                 });
             }
+
 
             // Ré-ajoutez la croix de fermeture après avoir rempli les images
             imageContainer.appendChild(closeButton);
@@ -487,17 +470,25 @@ var gridContainer = document.querySelector(".grid"); // Sélectionnez votre cont
         // Créer une nouvelle section avec un design différent
         var daContainer = document.createElement("div");
         daContainer.classList.add('da-container');
-    
+
         var img = document.createElement("img");
         img.src = imageSrc;
         img.classList.add('da-image');
-    
+
+        // Créer la div da-text-container qui contiendra le texte
+        var textContainer = document.createElement("div");
+        textContainer.classList.add('da-text-container');
+
         var p = document.createElement("p");
         p.innerText = text;
         p.classList.add('da-text');
-    
+
+        // Ajouter le <p> dans la div da-text-container
+        textContainer.appendChild(p);
+
+        // Ajouter l'image et la div texte dans le conteneur principal
         daContainer.appendChild(img);
-        daContainer.appendChild(p);
+        daContainer.appendChild(textContainer);
     
         // Ajouter le bouton de visite
         if (lien) {
@@ -516,7 +507,7 @@ var gridContainer = document.querySelector(".grid"); // Sélectionnez votre cont
         // Ajoutez le bouton de retour
         var backButton = document.createElement("img");
         backButton.src = "../assets/images/back.svg"; 
-        backButton.classList.add('back-button');
+        backButton.classList.add('button--back');
     
         // Gestionnaire d'événements pour revenir au pop-up précédent
         backButton.addEventListener("click", function() {
